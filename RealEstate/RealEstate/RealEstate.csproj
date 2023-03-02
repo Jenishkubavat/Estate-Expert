@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\fonts\" />
+    <Folder Include="wwwroot\image\testimonial\" />
+    <Folder Include="wwwroot\image\reviewer\" />
+    <Folder Include="wwwroot\image\trending\" />
+    <Folder Include="wwwroot\lib\ajax\css\" />
+    <Folder Include="wwwroot\script\" />
+  </ItemGroup>
+
+</Project>

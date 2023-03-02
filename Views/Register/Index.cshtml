@@ -2,7 +2,13 @@
 @{
     Layout = null;
 }
-@model UserDetail;
+@model UserDetailsModel;
+@{
+    List<string> Types = new List<string>();
+    Types.Add("Agent");
+    Types.Add("Buyer");
+    IEnumerable<string> userTypes = Types;
+}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,11 +25,11 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="post"  action="#" class="sign-in-form" >
+                <form method="post" asp-controller="Register" asp-action="Login" class="sign-in-form">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input asp-for="UserName" type="text" placeholder="Username" />
+              <input asp-for="userName" type="text" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
@@ -32,32 +38,38 @@
             <input type="submit" value="Login" class="btn solid" />
          
           </form>
-                <form asp-controller="Register" asp-action="SignUp" class="sign-up-form">
+                <form asp-controller="Register" asp-action="Register" class="sign-up-form">
             <h2 class="title">Sign up</h2>
                     <div class="check-field ">
-                        <input  type="radio" asp-for="UserType" name="user_type" value=2 class="check" />
-                        <label for="user_type">Agent</label>
-                        <input  type="radio" name="user_type" value=3 class="check" />
-                        <label for="user_type">user</label>
+                        @foreach (var utype in userTypes){
+                            <input type="radio" asp-for="userType" value="@utype" class="check" />
+                        <label asp-for="userType">@utype</label>
+                        }
+                       
                     </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-                        <input asp-for="UserName" type="text" placeholder="Username" />
+                        <input asp-for="userName" type="text" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input asp-for="UserEmail" type="email" placeholder="Email" />
+              <input asp-for="userName" type="email" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-                        <input asp-for="UserPassword" type="password" id="txtPassword" placeholder="Password" />
+                        <input asp-for="userPassword" type="password" placeholder="Password" />
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
-                        <input id="txtConfirmPassword" type="password" placeholder="Confirm Password" />
+                        <input asp-for="conformPassword" type="password" placeholder="Confirm Password" />
                         
               </div>
-                    <input type="submit" class="btn" value="Sign up" onclick="return Validate()" />
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input asp-for="userMobileNumber" type="text" placeholder="Mobile number" />
+
+                    </div>
+                    <input type="submit" class="btn" value="Sign up"/>
           
           </form>
         </div>

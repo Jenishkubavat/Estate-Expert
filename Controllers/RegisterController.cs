@@ -21,13 +21,12 @@ namespace Estate_Expert.Controllers;
         user_Details.userId = _Db.userDetail.Select(x => x.userId).DefaultIfEmpty().Max()+1;
 
 
-        if (ModelState.IsValid)
-        {
+   
             
             _Db.userDetail.Add(user_Details);
             _Db.SaveChanges();
             return View();
-        }
+        
         return View(user_Details);
     }
     [HttpPost]
@@ -37,4 +36,5 @@ namespace Estate_Expert.Controllers;
         return View("Index", "Home"); ;
     }
 }
+
 

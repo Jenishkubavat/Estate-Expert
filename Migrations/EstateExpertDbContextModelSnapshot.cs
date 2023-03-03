@@ -45,7 +45,7 @@ namespace Estate_Expert.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("city");
+                    b.ToTable("city", (string)null);
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.SignInLogModel", b =>
@@ -66,7 +66,7 @@ namespace Estate_Expert.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("signInLogs");
+                    b.ToTable("signInLogs", (string)null);
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.StateModel", b =>
@@ -83,7 +83,7 @@ namespace Estate_Expert.Migrations
 
                     b.HasKey("stateId");
 
-                    b.ToTable("state");
+                    b.ToTable("state", (string)null);
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.UserDetailsModel", b =>
@@ -146,7 +146,7 @@ namespace Estate_Expert.Migrations
                     b.HasIndex("userName")
                         .IsUnique();
 
-                    b.ToTable("userDetails");
+                    b.ToTable("userDetails", (string)null);
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.CityModel", b =>

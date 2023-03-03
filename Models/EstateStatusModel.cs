@@ -5,7 +5,7 @@ namespace EstateAndLocation.Models
     public class EstateStatusModel
     {
         [Key]
-        public int EStatusId { get; set; } 
-        public string EStateStatusName { get; set; }
+        public int estateStatusId { get; set; } 
+        public string? estateStatus { get; set; }
     }
 }

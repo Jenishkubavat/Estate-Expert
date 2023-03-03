@@ -5,7 +5,8 @@ namespace EstateAndLocation.Models
     public class EstateTypeModel
     {
         [Key]
-        public int ETypeId { get; set; } 
-        public string TypeName { get; set; }
+        public int eTypeId { get; set; } 
+        public string? TypeName { get; set; }
+        
     }
 }

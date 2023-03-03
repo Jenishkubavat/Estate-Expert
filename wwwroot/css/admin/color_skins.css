@@ -1,0 +1,62 @@
+.theme-purple .profile-page .profile-sub-header .box-list ul li a:hover,
+.theme-purple .menu > ul > li > ul.normal-sub > li a:hover,
+.theme-purple .menu > ul > li > ul > li > ul > li a:hover {
+  background-color: #9c27b0;
+}
+.theme-purple .navbar-brand {
+  color: #9c27b0 !important;
+}
+.theme-purple .navbar-brand:hover,
+.theme-purple .navbar-brand:active,
+.theme-purple .navbar-brand:focus {
+  color: #9c27b0;
+}
+.theme-purple .navbar {
+  background: linear-gradient(45deg, #edbae7, #a890d3);
+}
+.theme-purple .nav > li > a {
+  color: #fff;
+}
+.theme-purple .nav > li > a:hover,
+.theme-purple .nav > li > a:focus {
+  background-color: transparent;
+}
+.theme-purple .nav .open > a {
+  background-color: transparent;
+}
+.theme-purple .nav .open > a:hover,
+.theme-purple .nav .open > a:focus {
+  background-color: transparent;
+}
+.theme-purple .bars {
+  color: #fff;
+}
+.theme-purple .sidebar .menu .list li.active {
+  background-color: transparent;
+}
+.theme-purple .sidebar .menu .list li.active > :first-child i,
+.theme-purple .sidebar .menu .list li.active > :first-child span {
+  color: #9c27b0;
+}
+.theme-purple .sidebar .menu .list a:hover {
+  color: #9c27b0;
+}
+.theme-purple .checkbox input[type="checkbox"]:checked + label::after {
+  border: 1px solid #9c27b0;
+}
+.theme-purple .inbox-widget .inbox-inner:hover .inbox-img img {
+  border: 2px solid #9c27b0;
+  transition: all 150ms linear;
+}
+.theme-purple .nav-tabs .nav-link.active {
+  border: 1px solid #9c27b0 !important;
+}
+.theme-purple .card .header h2:before {
+  background: #8e24aa;
+}
+.theme-purple .card .header h2 strong {
+  color: #8e24aa;
+}
+.theme-purple .blog-page .single-blog-post .img-holder .date-box {
+  background-color: #9c27b0;
+}

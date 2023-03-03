@@ -1,23 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Estate_Expert.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EstateAndLocation.Models
 {
     public class EstateDetailModel
     {
         [Key]
-        public int EstateId { get; set; }   
-        public string EstateName { get; set; }    
-        public int CityId { get;set; }
-        public int EstateTypeId { get; set; }
-        public decimal ? FloorSpace { get; set; }
-        public int ? NumberOfBalconies { get; set; }  
-        public decimal ? BalconiesSpace { get; set; }  
-        public int ? NumberOfBedrooms { get; set; }   
-        public int ? NumberOfBathrooms { get; set; }  
-        public int ? NumberOfGarages { get; set; }    
-        public decimal ? NumberOfParkingSpaces { get; set; }   
-        public bool ? PestAllowed { get; set; }   
-        public string EstateDescription { get; set; }   
-        public int EstateStatusId { get; set; } 
+        public int estateId { get; set; }   
+        public string? estateName { get; set; }    
+        public int cityId { get;set; }
+        public int estateTypeId { get; set; }
+        public decimal ? floorSpace { get; set; }
+        public int ? numberOfBalconies { get; set; }  
+        public decimal ? balconiesSpace { get; set; }  
+        public int ? numberOfBedrooms { get; set; }   
+        public int ? numberOfBathrooms { get; set; }  
+        public int ? numberOfGarages { get; set; }    
+        public int ? numberOfParkingSpaces { get; set; }   
+        public bool ? petAllowed { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string? estateDescription { get; set; }   
+        public int estateStatusId { get; set; }
+
+        //ForeignKeys
+        [ForeignKey("cityId")]
+        public virtual  CityModel estateCity { get; set; }
+        [ForeignKey("estateTypeId")]
+        public virtual EstateTypeModel estateType { get; set; }
+        [ForeignKey("estateStatusId")]
+        public virtual EstateStatusModel Status { get; set; }
+
+
+
     }
 }

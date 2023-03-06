@@ -15,12 +15,29 @@ namespace Estate_Expert.Controllers
                 _db = db;   
         }
 
-        public IActionResult Update(int uid=1)
+        //public IActionResult UserDetail()
+        // {
+        //     return View();
+        // }
+
+        //Get
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public IActionResult UserDetail(int? id)
         {
-            IEnumerable<UserDetailsModel> model;
-           model = _db.userDetail.Where(x=>x.userId== uid).ToList();
-            return View(model);
+            if (id == null)
+            {
+                return NotFound();
+
+            }
+            var Userobj = _db.userDetail.FirstOrDefault(x => x.userId == id);
+            if (Userobj == null)
+            {
+                return NotFound();
+            }
+
+            return View(Userobj);
         }
-        
+
     }
 }

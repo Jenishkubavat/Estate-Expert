@@ -49,6 +49,7 @@ namespace Estate_Expert.Controllers
                 _Db.SaveChanges();
                 return RedirectToAction("UserIndex",newUser);
             }
+            ModelState.Clear();
             return View(newUser);
         }
         [HttpPost]

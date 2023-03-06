@@ -1,4 +1,3 @@
-
 namespace Estate_Expert.Models
 {
     public class ErrorViewModel

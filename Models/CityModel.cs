@@ -1,22 +1,18 @@
-﻿using MessagePack;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Estate_Expert.Models;
-[Table("city")]
-public class CityModel
+namespace Estate_Expert.Models
+{
+    public class CityModel
     {
-    [System.ComponentModel.DataAnnotations.Key]
-    public int cityID { get; set; }
-        public string cityName { get; set; }
-        public string cityCode { get; set; } 
+        [Key]
+        public int SityID { get; set; }
+        public string CityName { get; set; }
+        public string CityCode { get; set; }
         public int StateId { get; set; }
 
-    [ForeignKey("StateId")]
-    public virtual StateModel state { get; set; }
-    public ICollection<UserDetailsModel> userCityDetails { get; set; }
-
-
+        [ForeignKey("StateId")]
+        public virtual StateModel state { get; set; }
+        public ICollection<UserDetailsModel> userCityDetails { get; set; }
     }
-
+}

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EstateAndLocation.Models
+namespace Estate_Expert.Models
 {
     public class EstateStatusModel
     {
         [Key]
-        public int estateStatusId { get; set; } 
-        public string? estateStatus { get; set; }
+        public int EstateStatusId { get; set; } 
+        public string? EstateStatus { get; set; }
+        public ICollection<EstateDetailModel> estatesDetails { get; set; }
     }
 }

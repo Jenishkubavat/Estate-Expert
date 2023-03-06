@@ -24,78 +24,228 @@ namespace Estate_Expert.Migrations
 
             modelBuilder.Entity("Estate_Expert.Models.CityModel", b =>
                 {
-                    b.Property<int>("cityID")
+                    b.Property<int>("SityID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("cityID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SityID"));
+
+                    b.Property<string>("CityCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CityName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<string>("cityCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("cityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("cityID");
+                    b.HasKey("SityID");
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("city");
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.EstateDetailModel", b =>
+                {
+                    b.Property<int>("EstateId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstateId"));
+
+                    b.Property<decimal?>("BalconiesSpace")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("EstateDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EstateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EstateStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EstateTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("FloorSpace")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("NumberOfBalconies")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NumberOfBathrooms")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NumberOfBedrooms")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NumberOfGarages")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("NumberOfParkingSpaces")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("PetAllowed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("cityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EstateId");
+
+                    b.HasIndex("EstateStatusId");
+
+                    b.HasIndex("EstateTypeId");
+
+                    b.HasIndex("cityId");
+
+                    b.ToTable("EstateDetail");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.EstateStatusModel", b =>
+                {
+                    b.Property<int>("EstateStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstateStatusId"));
+
+                    b.Property<string>("EstateStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EstateStatusId");
+
+                    b.ToTable("EstateStatus");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.EstateTypeModel", b =>
+                {
+                    b.Property<int>("EstateTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EstateTypeId"));
+
+                    b.Property<string>("TypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EstateTypeId");
+
+                    b.ToTable("estateTypes");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.InChargeModel", b =>
+                {
+                    b.Property<int>("InChargreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InChargreId"));
+
+                    b.Property<int>("AgentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateTo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EstateId")
+                        .HasColumnType("int");
+
+                    b.HasKey("InChargreId");
+
+                    b.HasIndex("AgentId");
+
+                    b.HasIndex("EstateId");
+
+                    b.ToTable("InChargeModel");
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.SignInLogModel", b =>
                 {
-                    b.Property<int>("logId")
+                    b.Property<int>("LogId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("logId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LogId"));
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("userId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("logId");
+                    b.HasKey("LogId");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("signInLogs");
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.StateModel", b =>
                 {
-                    b.Property<int>("stateId")
+                    b.Property<int>("StateId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("stateId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StateId"));
 
-                    b.Property<string>("stateName")
+                    b.Property<string>("StateName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("stateId");
+                    b.HasKey("StateId");
 
                     b.ToTable("state");
                 });
 
             modelBuilder.Entity("Estate_Expert.Models.UserDetailsModel", b =>
                 {
-                    b.Property<int>("userId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
-                    b.Property<int?>("cityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
+
+                    b.Property<int?>("StateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserDiscription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserMobileNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserPassword")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int?>("UserPhomeNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isActive")
                         .HasColumnType("bit");
@@ -106,44 +256,13 @@ namespace Estate_Expert.Migrations
                     b.Property<bool>("isDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("stateId")
-                        .HasColumnType("int");
+                    b.HasKey("UserId");
 
-                    b.Property<string>("userAddress")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("CityId");
 
-                    b.Property<string>("userDiscription")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasIndex("StateId");
 
-                    b.Property<string>("userEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("userMobileNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("userPassword")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int?>("userPhomeNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("userId");
-
-                    b.HasIndex("cityId");
-
-                    b.HasIndex("stateId");
-
-                    b.HasIndex("userName")
+                    b.HasIndex("UserName")
                         .IsUnique();
 
                     b.ToTable("userDetails");
@@ -160,11 +279,57 @@ namespace Estate_Expert.Migrations
                     b.Navigation("state");
                 });
 
+            modelBuilder.Entity("Estate_Expert.Models.EstateDetailModel", b =>
+                {
+                    b.HasOne("Estate_Expert.Models.EstateStatusModel", "Status")
+                        .WithMany("estatesDetails")
+                        .HasForeignKey("EstateStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Estate_Expert.Models.EstateTypeModel", "estateType")
+                        .WithMany("estates")
+                        .HasForeignKey("EstateTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Estate_Expert.Models.CityModel", "estateCity")
+                        .WithMany()
+                        .HasForeignKey("cityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Status");
+
+                    b.Navigation("estateCity");
+
+                    b.Navigation("estateType");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.InChargeModel", b =>
+                {
+                    b.HasOne("Estate_Expert.Models.UserDetailsModel", "AgentDetails")
+                        .WithMany("inchargeagent")
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Estate_Expert.Models.EstateDetailModel", "EstateDetail")
+                        .WithMany("inchargeestate")
+                        .HasForeignKey("EstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AgentDetails");
+
+                    b.Navigation("EstateDetail");
+                });
+
             modelBuilder.Entity("Estate_Expert.Models.SignInLogModel", b =>
                 {
                     b.HasOne("Estate_Expert.Models.UserDetailsModel", "logDetails")
                         .WithMany("signInLogs")
-                        .HasForeignKey("userId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -175,11 +340,11 @@ namespace Estate_Expert.Migrations
                 {
                     b.HasOne("Estate_Expert.Models.CityModel", "userCity")
                         .WithMany("userCityDetails")
-                        .HasForeignKey("cityId");
+                        .HasForeignKey("CityId");
 
                     b.HasOne("Estate_Expert.Models.StateModel", "userState")
                         .WithMany("userStateDetails")
-                        .HasForeignKey("stateId");
+                        .HasForeignKey("StateId");
 
                     b.Navigation("userCity");
 
@@ -191,6 +356,21 @@ namespace Estate_Expert.Migrations
                     b.Navigation("userCityDetails");
                 });
 
+            modelBuilder.Entity("Estate_Expert.Models.EstateDetailModel", b =>
+                {
+                    b.Navigation("inchargeestate");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.EstateStatusModel", b =>
+                {
+                    b.Navigation("estatesDetails");
+                });
+
+            modelBuilder.Entity("Estate_Expert.Models.EstateTypeModel", b =>
+                {
+                    b.Navigation("estates");
+                });
+
             modelBuilder.Entity("Estate_Expert.Models.StateModel", b =>
                 {
                     b.Navigation("cities");
@@ -200,6 +380,8 @@ namespace Estate_Expert.Migrations
 
             modelBuilder.Entity("Estate_Expert.Models.UserDetailsModel", b =>
                 {
+                    b.Navigation("inchargeagent");
+
                     b.Navigation("signInLogs");
                 });
 #pragma warning restore 612, 618

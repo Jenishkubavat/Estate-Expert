@@ -8,12 +8,12 @@ namespace Estate_Expert.Models
     public class SignInLogModel
     {
         [Key]
-        public int logId{ get; set; }
+        public int LogId{ get; set; }
         [Required]
-        public int userId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public DateTime Time { get; set; }= DateTime.Now;
-        [ForeignKey("userId")]
+        [ForeignKey("UserId")]
         public virtual UserDetailsModel logDetails { get; set; }
     }
 }

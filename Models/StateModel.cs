@@ -7,8 +7,8 @@ namespace Estate_Expert.Models;
 public class StateModel
     {
     [Key]
-        public int stateId { get; set; }
-        public string stateName { get; set; }
+        public int StateId { get; set; }
+        public string StateName { get; set; }
     public ICollection<CityModel> cities { get; set; }
     public ICollection<UserDetailsModel> userStateDetails { get; set; }
     }

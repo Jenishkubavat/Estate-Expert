@@ -25,6 +25,7 @@ namespace Estate_Expert.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UserDetail(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();

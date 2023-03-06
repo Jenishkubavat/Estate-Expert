@@ -1,35 +1,39 @@
-﻿using Estate_Expert.Models;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EstateAndLocation.Models
+namespace Estate_Expert.Models
 {
     public class EstateDetailModel
     {
         [Key]
-        public int estateId { get; set; }   
-        public string? estateName { get; set; }    
+        public int EstateId { get; set; }   
+        public string? EstateName { get; set; }    
         public int cityId { get;set; }
-        public int estateTypeId { get; set; }
-        public decimal ? floorSpace { get; set; }
-        public int ? numberOfBalconies { get; set; }  
-        public decimal ? balconiesSpace { get; set; }  
-        public int ? numberOfBedrooms { get; set; }   
-        public int ? numberOfBathrooms { get; set; }  
-        public int ? numberOfGarages { get; set; }    
-        public int ? numberOfParkingSpaces { get; set; }   
-        public bool ? petAllowed { get; set; }
+        public int EstateTypeId { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ? FloorSpace { get; set; }
+        public int ? NumberOfBalconies { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ? BalconiesSpace { get; set; }  
+        public int ? NumberOfBedrooms { get; set; }   
+        public int ? NumberOfBathrooms { get; set; }  
+        public int ? NumberOfGarages { get; set; }    
+        public int ? NumberOfParkingSpaces { get; set; }   
+        public bool ? PetAllowed { get; set; }
         [DataType(DataType.MultilineText)]
-        public string? estateDescription { get; set; }   
-        public int estateStatusId { get; set; }
+        public string? EstateDescription { get; set; }   
+        public int EstateStatusId { get; set; }
 
         //ForeignKeys
         [ForeignKey("cityId")]
         public virtual  CityModel estateCity { get; set; }
-        [ForeignKey("estateTypeId")]
+        [ForeignKey("EstateTypeId")]
         public virtual EstateTypeModel estateType { get; set; }
-        [ForeignKey("estateStatusId")]
+        [ForeignKey("EstateStatusId")]
         public virtual EstateStatusModel Status { get; set; }
+
+        public ICollection<InChargeModel> inchargeestate { get; set; }
 
 
 
